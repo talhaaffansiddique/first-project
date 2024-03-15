@@ -1,6 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+//CSS
+import "./index.css";
+
 const firstBook = {
   img: "https://images-na.ssl-images-amazon.com/images/I/81eB%2B7%2BCkUL._AC_UL200_SR200,200_.jpg",
   title: "title will be discovered soon",
@@ -15,12 +18,19 @@ const secondBook = {
 
 function BookList() {
   return (
-    <section>
+    <section className="booklist">
       <Book
         img={firstBook.img}
         title={firstBook.title}
         author={firstBook.author}
-      />
+      >
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
+          hic nulla fugit quibusdam! Odio inventore molestias, vel iste tenetur
+          repudiandae quasi blanditiis ducimus totam nobis ipsa voluptate illum,
+          quis quos?
+        </p>
+      </Book>
       <Book
         img={secondBook.img}
         title={secondBook.title}
@@ -30,13 +40,15 @@ function BookList() {
   );
 }
 
-const Book = ({ img, title, author }) => {
-  //const {img, title, author} = props
+const Book = (props) => {
+  const { img, title, author } = props;
+  console.log(props);
   return (
-    <article>
+    <article className="book">
       <img src={img} alt="" />
       <h1>{title}</h1>
       <h4>{author}</h4>
+      {props.children}
     </article>
   );
 };
