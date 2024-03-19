@@ -9,12 +9,14 @@ const books = [
     img: "https://images-na.ssl-images-amazon.com/images/I/81eB%2B7%2BCkUL._AC_UL200_SR200,200_.jpg",
     title: "title will be discovered soon",
     author: "Talha ",
+    id: 1,
   },
 
   {
     img: "https://m.media-amazon.com/images/I/914661eRCnL._AC_UY218_.jpg",
     title: "The Family Secret",
     author: "Kiersten Modglin ",
+    id: 2,
   },
 ];
 const names = ["john", "peter", "susan"];
@@ -23,7 +25,15 @@ const newName = names.map((name) => {
 });
 
 function BookList() {
-  return <section className="booklist">{newName}</section>;
+  return (
+    <section className="booklist">
+      {books.map((book) => {
+        const { img, title, author, id } = book;
+
+        return <Book img={img} title={title} aurthor={author} key={id} />;
+      })}
+    </section>
+  );
 }
 
 const Book = (props) => {
